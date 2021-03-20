@@ -2,7 +2,7 @@ using System;
 
 namespace dotnettest
 {
-  public static class Test2
+  public class Test2
   {
     /*
     test2
@@ -24,7 +24,7 @@ namespace dotnettest
         expected worst-case time complexity isO(N*log(N));
         expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
     */
-    public static void Run()
+    public void Run()
     {
         Console.WriteLine("TEST 2");
 

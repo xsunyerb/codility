@@ -2,12 +2,12 @@ using System;
 
 namespace dotnettest
 {
-  public static class Test
+  public class Test
   {
     /*
     test
     */
-    public static void Run()
+    public void Run()
     {
         Console.WriteLine("TEST");
     }

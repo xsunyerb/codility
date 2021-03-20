@@ -5,7 +5,7 @@ using System.Text;
 
 namespace dotnettest
 {
-  public static class Test1
+  public class Test1
   {
     /*
     test 1
@@ -17,7 +17,7 @@ namespace dotnettest
     "aaaa", "aa" => "aa"
     "ABBA, "ABCABA" => "ABBA"
     */
-    public static void Run()
+    public void Run()
     {
         Console.WriteLine("TEST 1");
 
@@ -42,7 +42,7 @@ namespace dotnettest
         Console.WriteLine(s1 + ", " + s2 + " => " + res);
     }
 
-    static string CalculateMaxSubSequence(string s1, string s2) 
+    string CalculateMaxSubSequence(string s1, string s2) 
     {
         string maxSubSequence = string.Empty;
 
@@ -58,7 +58,7 @@ namespace dotnettest
         return maxSubSequence;
     }
 
-    private static string getLongestSubsequence(string s1, string s2)
+    string getLongestSubsequence(string s1, string s2)
     {
         string result = string.Empty;
 
