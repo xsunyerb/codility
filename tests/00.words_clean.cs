@@ -2,7 +2,7 @@ using System;
 
 namespace dotnettest
 {
-  public class Words
+  public class WordsClean
   {
     /*
     test
@@ -16,9 +16,9 @@ namespace dotnettest
         // int[] score = {1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
         // 23
-        // string[] words = {"dog","cat","dad","good"};        
-        // char[] letters = {'a','a','c','d','d','d','g','o','o'};
-        // int[] score = {1,0,9,5,0,0,3,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0};
+        string[] words = {"dog","cat","dad","good"};        
+        char[] letters = {'a','a','c','d','d','d','g','o','o'};
+        int[] score = {1,0,9,5,0,0,3,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0};
 
         // int result = CalculateMaxScoreWords(words, letters,score);
         // Console.WriteLine("> " + result);
@@ -32,9 +32,9 @@ namespace dotnettest
         // Console.WriteLine("> " + result);
 
         // 0
-        string[] words = {"leetcode"};
-        char[] letters = {'l','e','t','c','o','d'};
-        int[] score = {0,0,1,1,1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0};
+        // string[] words = {"leetcode"};
+        // char[] letters = {'l','e','t','c','o','d'};
+        // int[] score = {0,0,1,1,1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0};
 
         int result = CalculateMaxScoreWords(words, letters,score);
         Console.WriteLine("> " + result);
@@ -51,42 +51,29 @@ namespace dotnettest
       }
 
       // calculate max score
-      maxScore = CalculateNextWord(words, lettersCount, score, maxScore, 0, string.Empty);
+      maxScore = CalculateNextWord(words, lettersCount, score, maxScore, 0);
       return maxScore;
     }
 
-    int CalculateNextWord(string[] words, int[] lettersCount, int[] score, int maxScore, int currentWordIndex, string wordslist)
+    int CalculateNextWord(string[] words, int[] lettersCount, int[] score, int maxScore, int currentWordIndex)
     {
       if (currentWordIndex == words.Length) {
-        Console.WriteLine("WORDS: " + wordslist + " | MAXSCORE: "+ maxScore);
         return maxScore;
       }
-      
-      Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>CURRENT WORD: " +  words[currentWordIndex]);
 
       // calculate score without using current word
-      string wordslist2 = wordslist + " - NO." + words[currentWordIndex];
       int score1 = maxScore;
-      score1 = CalculateNextWord(words, lettersCount, score, score1, currentWordIndex+1, wordslist2);
-      Console.WriteLine("WORDSLIST2: " + wordslist2 + " | SCORE1: "+ score1);
-      Console.WriteLine("-------------");
+      score1 = CalculateNextWord(words, lettersCount, score, score1, currentWordIndex+1);
 
       // calculate score using current word
       int score2 = 0;
       if (CanUseWord(words[currentWordIndex], lettersCount, out int[] newLettersCount, score, out int scoreWord))
       {
-        string wordslist3 = wordslist + " - YES." + words[currentWordIndex];
         score2 = maxScore + scoreWord;
-        //Console.WriteLine("SCORE2: "+ score2);
-        score2 = CalculateNextWord(words, newLettersCount, score, score2, currentWordIndex+1, wordslist3);
-        Console.WriteLine("WORDSLIST3: " + wordslist3 + " | SCORE2: "+ score2);
-        Console.WriteLine("-------------");
+        score2 = CalculateNextWord(words, newLettersCount, score, score2, currentWordIndex+1);
       }  
 
       maxScore = Math.Max(score1, score2);
-      Console.WriteLine("MAXSCORE: " + maxScore + " | SCORE1: "+ score1 + " | SCORE2: "+ score2);
-      Console.WriteLine("=============");
-      Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>END CURRENT WORD: " +  words[currentWordIndex]);
       return maxScore;
     }
 
@@ -104,11 +91,9 @@ namespace dotnettest
           scoreWord += score[c - 'a'];
         }
         else {
-          Console.WriteLine("CANNOT USE WORD: " + currentWord);
           return false;
         }
       }
-      Console.WriteLine("CAN USE WORD: " + currentWord + " - SCORE WORD: " + scoreWord);
       return true;
     }
   }
