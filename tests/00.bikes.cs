@@ -2,7 +2,7 @@ using System;
 
 namespace dotnettest
 {
-  public class Test2
+  public class Bikes
   {
     /*
     test2
@@ -26,7 +26,7 @@ namespace dotnettest
     */
     public void Run()
     {
-        Console.WriteLine("TEST 2");
+        Console.WriteLine("Bikes");
 
         // N bikes parked
         // the chosen rack must lie between the first and the last used racks(inclusive);

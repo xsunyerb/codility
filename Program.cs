@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            new Test8().Run();
+            //new Bikes().Run();
+            new Words().Run();
         }
     }
 }
