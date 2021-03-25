@@ -37,7 +37,9 @@ namespace dotnettest
         //a negative value means that it's located |A[K]| meters to the left.
         //given a non-empty zero-indexed array A of N integers, returns the largest possible distance in meters between the chosen rack and any other used rack.
 
-        int[] A = { 8, -4, 0, 2, 3 };
+        //int[] A = { 8, -4, 0, 2, 3 };
+        int[] A = { 10, 0, 8, 2, -1, 12, 11, 3 };
+        //int[] A = { -10, 0};
 
         // A.length >= 2
         // A[1] = position where bike 1 is attached
